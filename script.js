@@ -20,8 +20,16 @@ Book.prototype.info = function(){
 
 //add user input book into library array
 function addBookToLibrary(){
-
+    let title = prompt('enter book title')
+    let author = prompt('enter book author')
+    let pages = prompt('enter number of pages')
+    let read = prompt('enter true if book read, false if not')
+    const newBook = new Book(title, author, pages, read)
+    myLibrary.push(newBook)
+    console.log(myLibrary)
 }
 
-const oathbringer = new Book('oathbringer', 'branderson', '1450', true);
-console.log(oathbringer.info());
+const addBookButton = document.querySelector('#addBookButton');
+addBookButton.addEventListener('click', addBookToLibrary);
+
+
