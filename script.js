@@ -19,17 +19,17 @@ Book.prototype.info = function(){
 }
 
 //add user input book into library array
-function addBookToLibrary(){
-    let title = prompt('enter book title')
-    let author = prompt('enter book author')
-    let pages = prompt('enter number of pages')
-    let read = prompt('enter true if book read, false if not')
+function addBook(){
+    let title = document.querySelector('#title').value;
+    let author = document.querySelector('#author');
+    let pages = document.querySelector('#pages');
     const newBook = new Book(title, author, pages, read)
     myLibrary.push(newBook)
     console.log(myLibrary)
 }
 
-const addBookButton = document.querySelector('#addBookButton');
-addBookButton.addEventListener('click', addBookToLibrary);
-
+//get submit button
+const submitBook = document.querySelector('.submit-button');
+//add book to array on button click
+submitBook.addEventListener('click', addBook);
 

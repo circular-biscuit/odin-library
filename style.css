@@ -1,31 +1,99 @@
-html {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+:root {
+    /* dark mode custom color declarations */
+    --dark-background-1: #0d1117;
+    --dark-background-2: #0e1724;
+    --dark-background-2-tl: #0e1724df;
+    --dark-fill: #2f3045;
+    --dark-heading: #1b2e49f8;
+    --light-text: #c9d1d9;
+    --bright-text: #00ffffad;
+    --bright-text-dim: #00ffff75;
+    --dim-background: #dbce7899;
+
+    /* light mode custom color declarations */
+    --light-background-1: #ffffff;
+    --light-background-2: #f3f3f3;
+    --light-background-3: #d4d1cd;
+    --dark-text-1: #212529;
+    --dark-text-2:#4a4a4a;
+    --element-background-1: #6abfc3;
+    --element-background-2: #cc9543;
+    /* html background color */
+    background-color: var(--dark-text-2);
+    
 }
 
-#header {
-    border: thick dotted aquamarine;
-    padding: 16px;
-}
+/*-------------GLOBAL------------*/
 
-h1 {
-    color: white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: monospace;
+    color: var(--dark-text-2);
+    border-radius: 4px;
+    text-decoration: none;
 }
 
-#addBookContainer {
-    border: thick dotted crimson;
-    padding: 8px;
+body {
     display: flex;
     justify-content: center;
 }
 
-#addBookButton {
-    color: white;
-    font-family: monospace;
-    background-color: black;
-    border: thin solid white;
-    border-radius: 4px;
+button {
+    padding: 1rem;
+    border: none;
+    /* box-shadow: 2px 2px 2px var(--dark-text-2); */
 }
+
+/* remove arrows from input number field*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/*-------------CONTAINER------------*/
+
+.container {
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+    height: 100vh;
+}
+
+/*-------------HEADER------------*/
+
+
+
+
+/*-------------MAIN------------*/
+main {
+    background-color: var(--light-background-3);
+    padding:1rem;
+}
+
+    main form {
+        /* display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem; */
+        padding: 1rem;
+        margin-bottom: 1rem;
+        background-color: var(--element-background-1);
+        /* opacity: 20%; */
+    }
+
+        main form fieldset {
+            padding: 1rem;
+        }
+
+            main form .input-box {
+                display:grid;
+            }
+
+/*-------------FOOTER------------*/
