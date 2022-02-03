@@ -8,7 +8,7 @@
     --light-text: #c9d1d9;
     --bright-text: #00ffffad;
     --bright-text-dim: #00ffff75;
-    --dim-background: #dbce7899;
+    --dim-background: #dbce78;
 
     /* light mode custom color declarations */
     --light-background-1: #ffffff;
@@ -30,7 +30,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: monospace;
-    color: var(--dark-text-2);
+    color: var(--dark-text-1);
     border-radius: 4px;
     text-decoration: none;
 }
@@ -44,6 +44,10 @@ button {
     padding: 1rem;
     border: none;
     /* box-shadow: 2px 2px 2px var(--dark-text-2); */
+}
+
+button:hover {
+    background-color: var(--dim-background);
 }
 
 /* remove arrows from input number field*/
@@ -94,6 +98,15 @@ main {
 
             main form .input-box {
                 display:grid;
+                /* gap: 1rem; */
+                margin: 1rem 0;
             }
+
+                main form .radio-input{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 0.5rem;
+                    margin-top: 1rem;
+                }
 
 /*-------------FOOTER------------*/
