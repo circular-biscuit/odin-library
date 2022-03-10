@@ -107,5 +107,19 @@ form {
                 }
 
     .container .book-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: 1rem;
+        padding: 1rem;
         background-color: var(--dark-background-1);
     }           
+
+        .card {
+            display: grid;
+            height: fit-content;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid var(--element-background-1);
+        }
+
+        

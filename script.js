@@ -9,6 +9,23 @@ function Book(title, author, pages, read){
     this.read = read
 }
 
+const bookCards = document.querySelector('.book-cards');
+const printBook = (Book) => {
+    // console.log(Book.index);
+    const card = document.createElement('div');
+    card.classList.add('card');
+    const title = document.createElement('div');
+    title.append(`title: ${Book.title}`);
+    const author = document.createElement('div');
+    author.append(`author: ${Book.author}`);
+    const pages = document.createElement('div');
+    pages.append(`number of pages: ${Book.pages}`);
+    const read = document.createElement('div');
+    read.append(`read status: ${Book.read}`);
+    card.append(title, author, pages, read);
+    bookCards.append(card);
+}
+
 //add user input book into library array
 const addBook = (e) => {
     e.preventDefault(); //to stop form from submitting and making page reload
@@ -20,6 +37,7 @@ const addBook = (e) => {
     //create new book object using user values
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
+    printBook(newBook);
     console.table(myLibrary);
     document.querySelector('form').reset(); //to clear form for the next entries
 }
