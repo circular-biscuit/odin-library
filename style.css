@@ -8,18 +8,18 @@
     --light-text: #c9d1d9;
     --bright-text: #00ffffad;
     --bright-text-dim: #00ffff75;
-    --dim-background: #dbce78;
-
+    --dim-background-light: #dbce7899;
     /* light mode custom color declarations */
     --light-background-1: #ffffff;
     --light-background-2: #f3f3f3;
     --light-background-3: #d4d1cd;
+    --dim-background-dark: #dbce78;
     --dark-text-1: #212529;
     --dark-text-2:#4a4a4a;
     --element-background-1: #6abfc3;
     --element-background-2: #cc9543;
     /* html background color */
-    background-color: var(--dark-text-2);
+    background-color: var(--dark-background-1);
     
 }
 
@@ -30,7 +30,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: monospace;
-    color: var(--dark-text-1);
+    color: var(--light-text);
     border-radius: 4px;
     text-decoration: none;
 }
@@ -38,16 +38,18 @@
 body {
     display: flex;
     justify-content: center;
+    padding: 1rem 10rem;
 }
 
 button {
+    background-color: var(--element-background-1);
+    color: var(--dark-background-1);
     padding: 1rem;
     border: none;
-    /* box-shadow: 2px 2px 2px var(--dark-text-2); */
 }
 
 button:hover {
-    background-color: var(--dim-background);
+    background-color: var(--dim-background-dark);
 }
 
 /* remove arrows from input number field*/
@@ -63,50 +65,47 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/*-------------CONTAINER------------*/
+input {
+    background-color: var(--dark-background-2);
+}
 
-.container {
-    display: grid;
-    grid-template-rows: 1fr 4fr 1fr;
+/*-------------form container------------*/
+
+form {
     height: 100vh;
 }
 
-/*-------------HEADER------------*/
-
-
-
-
-/*-------------MAIN------------*/
-main {
-    background-color: var(--light-background-3);
+/*-------------.container------------*/
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    background-color: var(--dark-background-2);
+    gap: 1rem;
     padding:1rem;
 }
 
-    main form {
-        /* display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem; */
+    .container form {
         padding: 1rem;
         margin-bottom: 1rem;
-        background-color: var(--element-background-1);
-        /* opacity: 20%; */
+        background-color: var(--dark-background-1);
     }
 
-        main form fieldset {
+        .container form fieldset {
             padding: 1rem;
         }
 
-            main form .input-box {
+            .container form .input-box {
                 display:grid;
-                /* gap: 1rem; */
+                gap: 1rem;
                 margin: 1rem 0;
             }
 
-                main form .radio-input{
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 0.5rem;
-                    margin-top: 1rem;
+                .container form .checkbox-input{
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 1rem 0;
                 }
 
-/*-------------FOOTER------------*/
+    .container .book-cards {
+        background-color: var(--dark-background-1);
+    }           

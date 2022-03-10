@@ -9,27 +9,22 @@ function Book(title, author, pages, read){
     this.read = read
 }
 
-//book info display function added to prototype
-// Book.prototype.info = function(){
-//     if (Book.read){
-//         return (Book.title + ' by ' + Book.author + ', ' + Book.pages + ' pages, yes I have read it.')
-//     } else { 
-//         return (Book.title + ' by ' + Book.author + ', ' + Book.pages + ' pages, no i have not read it.')
-//     }
-// }
-
 //add user input book into library array
-function addBook(e){
-    e.preventDefault();
+const addBook = (e) => {
+    e.preventDefault(); //to stop form from submitting and making page reload
+    //get user input values from form
     let title = document.querySelector('#title').value;
-    let author = document.querySelector('#author');
-    let pages = document.querySelector('#pages');
+    let author = document.querySelector('#author').value;
+    let pages = document.querySelector('#pages').value;
+    let read = document.querySelector('#read').value;
+    //create new book object using user values
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
-    console.log(myLibrary);
+    console.table(myLibrary);
+    document.querySelector('form').reset(); //to clear form for the next entries
 }
 
 //get submit button
 const submitBook = document.querySelector('.submit-button');
 //add book to array on button click
-submitBook.addEventListener('click', (e) => addBook);
+submitBook.addEventListener('click', addBook);
