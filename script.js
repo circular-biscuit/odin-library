@@ -1,6 +1,9 @@
 //library array declaration
 let myLibrary = [];
 
+let readMessage = 'You have read this book';
+let unreadMessage = 'You have not read this book';
+
 //Book object constructor
 function Book(title, author, pages, isRead){
     this.title = title
@@ -17,11 +20,11 @@ const toggleRead = e => {
     if (e.target.classList.value === 'isReadButton read'){
         e.target.classList.remove('read');
         e.target.classList.add('unread');
-        e.target.textContent = 'you have not read this book';
+        e.target.textContent = `${unreadMessage}`;
     } else {
          e.target.classList.remove('unread');
          e.target.classList.add('read');
-         e.target.textContent = 'you have read this book';
+         e.target.textContent = `${readMessage}`;
     }
 };
 
@@ -71,14 +74,14 @@ const addBook = (e) => {
     //create new book object using user values
     if(titlePattern.test(title) && authorPattern.test(author) && pagesPattern.test(pages)){
         if (isRead.checked){
-            isRead.value = 'you have read this book';
+            isRead.value = `${readMessage}`;
             const newBook = new Book(title, author, pages, isRead);
             myLibrary.push(newBook);
             printBook(newBook);
             // console.table(myLibrary);
             document.querySelector('form').reset(); //to clear form for the next entries
         } else {
-            isRead.value = 'you have not read this book';
+            isRead.value = `${unreadMessage}`;
             const newBook = new Book(title, author, pages, isRead);
             myLibrary.push(newBook);
             printBook(newBook);
