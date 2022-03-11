@@ -28,6 +28,11 @@ const printBook = (Book) => {
     bookCards.append(card);
 }
 
+//validation patterns for form inputs
+const titlePattern = /^.{1,}$/;
+const authorPattern = /^[a-zA-Z\s]{1,}$/;
+const pagesPattern = /^[0-9]{1,}$/;
+
 //add user input book into library array
 const addBook = (e) => {
     e.preventDefault(); //to stop form from submitting and making page reload
@@ -37,15 +42,21 @@ const addBook = (e) => {
     let pages = form.pages.value;
     let read = form.read.value;
     //create new book object using user values
-    const newBook = new Book(title, author, pages, read);
-    myLibrary.push(newBook);
-    printBook(newBook);
-    console.table(myLibrary);
-    document.querySelector('form').reset(); //to clear form for the next entries
+    if(titlePattern.test(title) && authorPattern.test(author) && pagesPattern.test(pages)){
+        const newBook = new Book(title, author, pages, read);
+        myLibrary.push(newBook);
+        printBook(newBook);
+        console.table(myLibrary);
+        document.querySelector('form').reset(); //to clear form for the next entries
+    } else {
+        console.log('your input is invalid');
+    }
 }
 
 const form = document.querySelector('.add-book-form');
 form.addEventListener('submit', addBook);
+
+
 
 //temporary Book objects
 const newBook = new Book(title, author, pages, read);
