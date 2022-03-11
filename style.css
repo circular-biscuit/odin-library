@@ -47,11 +47,8 @@ button {
 }
 
 button:hover {
-    background-color: var(--dim-background-dark);
-}
-
-button:active {
-    transform: scale(1.01);
+    /* background-color: var(--dim-background-dark); */
+    cursor: pointer;
 }
 
 /* remove arrows from input number field*/
@@ -136,4 +133,12 @@ form {
                 font-size: 1.25rem;
                 font-weight: bold;
                 font-style: italic;
+            }
+
+            .read {
+                background-color: limegreen;
+            }
+
+            .unread {
+                background-color: crimson;
             }

@@ -10,26 +10,22 @@ function Book(title, author, pages, isRead){
 }
 
 const bookCards = document.querySelector('.book-cards');
-// const printBook = (Book) => {
-//     // console.log(Book.index);
-//     const card = document.createElement('div');
-//     card.classList.add('card');
-//     const title = document.createElement('div');
-//     title.append(`"${Book.title}"`);
-//     const author = document.createElement('div');
-//     author.append(`by ${Book.author}`);
-//     const pages = document.createElement('div');
-//     pages.append(`${Book.pages} pages`);
-//     const isRead = document.createElement('div');
-//     isRead.append(`${Book.isRead.value}`);
-//     const removeBook = document.createElement('button');
-//     removeBook.textContent = 'Remove Book';
-//     card.append(title, author, pages, isRead, removeBook);
-//     bookCards.append(card);
-// }
+const toggleRead = e => {
+    console.log(e);
+    // if (e.target.classList.value.includes('read'))
+    // if (e.target.classList.value === 'isReadButton read')
+    if (e.target.classList.value === 'isReadButton read'){
+        e.target.classList.remove('read');
+        e.target.classList.add('unread');
+        e.target.textContent = 'you have not read this book';
+    } else {
+         e.target.classList.remove('unread');
+         e.target.classList.add('read');
+         e.target.textContent = 'you have read this book';
+    }
+};
 
 const printBook = (Book) => {
-    // console.log(Book.index);
     const card = document.createElement('div');
     card.classList.add('card');
     const title = document.createElement('div');
@@ -45,18 +41,19 @@ const printBook = (Book) => {
     switch (Book.isRead.checked){
         case true:
             isRead.textContent = `${Book.isRead.value}`;
-            isRead.style.backgroundColor = 'limeGreen';
+            isRead.classList.add('read');
             break;
         case false:
             isRead.textContent = `${Book.isRead.value}`;
-            isRead.style.backgroundColor = 'crimson';
+            isRead.classList.add('unread');
             break;
     }
+    isRead.addEventListener('click', toggleRead);
     const removeBook = document.createElement('button');
     removeBook.textContent = 'Remove Book';
     card.append(title, author, pages, isRead, removeBook);
     bookCards.append(card);
-}
+};
 
 //validation patterns for form inputs
 const titlePattern = /^.{1,}$/;
