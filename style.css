@@ -36,8 +36,7 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
+
     padding: 1rem 10rem;
 }
 
@@ -67,6 +66,13 @@ input[type=number] {
 
 input {
     background-color: var(--dark-background-2);
+}
+
+/*-------------header------------*/
+
+h1 {
+    text-align: center;
+    padding: 1rem;
 }
 
 /*-------------form container------------*/
@@ -116,7 +122,9 @@ form {
 
         .card {
             display: grid;
+            justify-items: center;
             height: fit-content;
+            min-width: max-content;
             gap: 1rem;
             padding: 1rem;
             border: 1px solid var(--element-background-1);

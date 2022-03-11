@@ -15,14 +15,16 @@ const printBook = (Book) => {
     const card = document.createElement('div');
     card.classList.add('card');
     const title = document.createElement('div');
-    title.append(`title: ${Book.title}`);
+    title.append(`"${Book.title}"`);
     const author = document.createElement('div');
-    author.append(`author: ${Book.author}`);
+    author.append(`by ${Book.author}`);
     const pages = document.createElement('div');
-    pages.append(`number of pages: ${Book.pages}`);
+    pages.append(`${Book.pages} pages`);
     const read = document.createElement('div');
     read.append(`read status: ${Book.read}`);
-    card.append(title, author, pages, read);
+    const removeBook = document.createElement('button');
+    removeBook.textContent = 'Remove Book';
+    card.append(title, author, pages, read, removeBook);
     bookCards.append(card);
 }
 
@@ -46,3 +48,31 @@ const addBook = (e) => {
 const submitBook = document.querySelector('.submit-button');
 //add book to array on button click
 submitBook.addEventListener('click', addBook);
+
+//temporary objects
+const newBook = new Book(title, author, pages, read);
+newBook.title = 'a little hatred';
+newBook.author = 'joe abercrombie';
+newBook.pages = 523;
+newBook.read = 'yes';
+myLibrary.push(newBook);
+printBook(newBook);
+console.table(myLibrary);
+
+const newBook2 = new Book(title, author, pages, read);
+myLibrary.push(newBook2);
+newBook2.title = 'the trouble with peace';
+newBook2.author = 'joe abercrombie';
+newBook2.pages = 532;
+newBook2.read = 'yes';
+printBook(newBook2);
+console.table(myLibrary);
+
+const newBook3 = new Book(title, author, pages, read);
+newBook3.title = 'the wisdom of crowds';
+newBook3.author = 'joe abercrombie';
+newBook3.pages = 544;
+newBook3.read = 'yes';
+myLibrary.push(newBook3);
+printBook(newBook3);
+console.table(myLibrary);
