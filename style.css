@@ -50,6 +50,10 @@ button:hover {
     background-color: var(--dim-background-dark);
 }
 
+button:active {
+    transform: scale(1.01);
+}
+
 /* remove arrows from input number field*/
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -127,3 +131,9 @@ form {
             padding: 1rem;
             border: 1px solid var(--element-background-1);
         }
+
+            .bookTitle {
+                font-size: 1.25rem;
+                font-weight: bold;
+                font-style: italic;
+            }

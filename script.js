@@ -10,18 +10,48 @@ function Book(title, author, pages, isRead){
 }
 
 const bookCards = document.querySelector('.book-cards');
+// const printBook = (Book) => {
+//     // console.log(Book.index);
+//     const card = document.createElement('div');
+//     card.classList.add('card');
+//     const title = document.createElement('div');
+//     title.append(`"${Book.title}"`);
+//     const author = document.createElement('div');
+//     author.append(`by ${Book.author}`);
+//     const pages = document.createElement('div');
+//     pages.append(`${Book.pages} pages`);
+//     const isRead = document.createElement('div');
+//     isRead.append(`${Book.isRead.value}`);
+//     const removeBook = document.createElement('button');
+//     removeBook.textContent = 'Remove Book';
+//     card.append(title, author, pages, isRead, removeBook);
+//     bookCards.append(card);
+// }
+
 const printBook = (Book) => {
     // console.log(Book.index);
     const card = document.createElement('div');
     card.classList.add('card');
     const title = document.createElement('div');
-    title.append(`"${Book.title}"`);
+    title.classList.add('bookTitle');
+    title.append(`${Book.title}`);
     const author = document.createElement('div');
     author.append(`by ${Book.author}`);
     const pages = document.createElement('div');
     pages.append(`${Book.pages} pages`);
-    const isRead = document.createElement('div');
-    isRead.append(`${Book.isRead.value}`);
+
+    const isRead = document.createElement('button');
+    isRead.classList.add('isReadButton');
+    switch (Book.isRead.checked){
+        case true:
+            isRead.textContent = `${Book.isRead.value}`;
+            isRead.style.backgroundColor = 'limeGreen';
+            break;
+        case false:
+            isRead.textContent = `${Book.isRead.value}`;
+            isRead.style.backgroundColor = 'crimson';
+            break;
+    }
     const removeBook = document.createElement('button');
     removeBook.textContent = 'Remove Book';
     card.append(title, author, pages, isRead, removeBook);
@@ -45,7 +75,6 @@ const addBook = (e) => {
     if(titlePattern.test(title) && authorPattern.test(author) && pagesPattern.test(pages)){
         if (isRead.checked){
             isRead.value = 'you have read this book';
-            console.log(isRead.value);
             const newBook = new Book(title, author, pages, isRead);
             myLibrary.push(newBook);
             printBook(newBook);
@@ -53,7 +82,6 @@ const addBook = (e) => {
             document.querySelector('form').reset(); //to clear form for the next entries
         } else {
             isRead.value = 'you have not read this book';
-            console.log(isRead.value);
             const newBook = new Book(title, author, pages, isRead);
             myLibrary.push(newBook);
             printBook(newBook);
@@ -67,12 +95,3 @@ const addBook = (e) => {
 
 const form = document.querySelector('.add-book-form');
 form.addEventListener('submit', addBook);
-
-//temporary Book objects
-const newBook = new Book(title, author, pages, isRead);
-newBook.title = 'a little hatred';
-newBook.author = 'joe abercrombie';
-newBook.pages = 523;
-newBook.isRead = 'yes';
-myLibrary.push(newBook);
-printBook(newBook);
