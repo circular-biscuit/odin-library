@@ -2,11 +2,11 @@
 let myLibrary = [];
 
 //Book object constructor
-function Book(title, author, pages, read){
+function Book(title, author, pages, isRead){
     this.title = title
     this.author = author
     this.pages = pages
-    this.read = read
+    this.isRead = isRead
 }
 
 const bookCards = document.querySelector('.book-cards');
@@ -20,11 +20,11 @@ const printBook = (Book) => {
     author.append(`by ${Book.author}`);
     const pages = document.createElement('div');
     pages.append(`${Book.pages} pages`);
-    const read = document.createElement('div');
-    read.append(`read status: ${Book.read}`);
+    const isRead = document.createElement('div');
+    isRead.append(`${Book.isRead.value}`);
     const removeBook = document.createElement('button');
     removeBook.textContent = 'Remove Book';
-    card.append(title, author, pages, read, removeBook);
+    card.append(title, author, pages, isRead, removeBook);
     bookCards.append(card);
 }
 
@@ -40,14 +40,26 @@ const addBook = (e) => {
     let title = form.title.value;
     let author = form.author.value;
     let pages = form.pages.value;
-    let read = form.read.value;
+    let isRead = form.isRead;
     //create new book object using user values
     if(titlePattern.test(title) && authorPattern.test(author) && pagesPattern.test(pages)){
-        const newBook = new Book(title, author, pages, read);
-        myLibrary.push(newBook);
-        printBook(newBook);
-        console.table(myLibrary);
-        document.querySelector('form').reset(); //to clear form for the next entries
+        if (isRead.checked){
+            isRead.value = 'you have read this book';
+            console.log(isRead.value);
+            const newBook = new Book(title, author, pages, isRead);
+            myLibrary.push(newBook);
+            printBook(newBook);
+            // console.table(myLibrary);
+            document.querySelector('form').reset(); //to clear form for the next entries
+        } else {
+            isRead.value = 'you have not read this book';
+            console.log(isRead.value);
+            const newBook = new Book(title, author, pages, isRead);
+            myLibrary.push(newBook);
+            printBook(newBook);
+            // console.table(myLibrary);
+            document.querySelector('form').reset(); //to clear form for the next entries
+        }
     } else {
         console.log('your input is invalid');
     }
@@ -56,32 +68,11 @@ const addBook = (e) => {
 const form = document.querySelector('.add-book-form');
 form.addEventListener('submit', addBook);
 
-
-
 //temporary Book objects
-const newBook = new Book(title, author, pages, read);
+const newBook = new Book(title, author, pages, isRead);
 newBook.title = 'a little hatred';
 newBook.author = 'joe abercrombie';
 newBook.pages = 523;
-newBook.read = 'yes';
+newBook.isRead = 'yes';
 myLibrary.push(newBook);
 printBook(newBook);
-console.table(myLibrary);
-
-const newBook2 = new Book(title, author, pages, read);
-myLibrary.push(newBook2);
-newBook2.title = 'the trouble with peace';
-newBook2.author = 'joe abercrombie';
-newBook2.pages = 532;
-newBook2.read = 'yes';
-printBook(newBook2);
-console.table(myLibrary);
-
-const newBook3 = new Book(title, author, pages, read);
-newBook3.title = 'the wisdom of crowds';
-newBook3.author = 'joe abercrombie';
-newBook3.pages = 544;
-newBook3.read = 'yes';
-myLibrary.push(newBook3);
-printBook(newBook3);
-console.table(myLibrary);
