@@ -32,10 +32,10 @@ const printBook = (Book) => {
 const addBook = (e) => {
     e.preventDefault(); //to stop form from submitting and making page reload
     //get user input values from form
-    let title = document.querySelector('#title').value;
-    let author = document.querySelector('#author').value;
-    let pages = document.querySelector('#pages').value;
-    let read = document.querySelector('#read').value;
+    let title = form.title.value;
+    let author = form.author.value;
+    let pages = form.pages.value;
+    let read = form.read.value;
     //create new book object using user values
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
@@ -44,12 +44,10 @@ const addBook = (e) => {
     document.querySelector('form').reset(); //to clear form for the next entries
 }
 
-//get submit button
-const submitBook = document.querySelector('.submit-button');
-//add book to array on button click
-submitBook.addEventListener('click', addBook);
+const form = document.querySelector('.add-book-form');
+form.addEventListener('submit', addBook);
 
-//temporary objects
+//temporary Book objects
 const newBook = new Book(title, author, pages, read);
 newBook.title = 'a little hatred';
 newBook.author = 'joe abercrombie';

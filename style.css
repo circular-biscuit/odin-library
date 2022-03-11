@@ -36,7 +36,6 @@
 }
 
 body {
-
     padding: 1rem 10rem;
 }
 
@@ -129,5 +128,3 @@ form {
             padding: 1rem;
             border: 1px solid var(--element-background-1);
         }
-
-        
