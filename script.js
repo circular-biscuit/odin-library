@@ -15,9 +15,7 @@ function Book(title, author, pages, isRead){
 const bookCards = document.querySelector('.book-cards');
 const toggleRead = e => {
     console.log(e);
-    // if (e.target.classList.value.includes('read'))
-    // if (e.target.classList.value === 'isReadButton read')
-    if (e.target.classList.value === 'isReadButton read'){
+    if (e.target.classList.contains('read')){
         e.target.classList.remove('read');
         e.target.classList.add('unread');
         e.target.textContent = `${unreadMessage}`;
@@ -54,6 +52,10 @@ const printBook = (Book) => {
     isRead.addEventListener('click', toggleRead);
     const removeBook = document.createElement('button');
     removeBook.textContent = 'Remove Book';
+    removeBook.addEventListener('click', e => {
+        console.log(e);
+    })
+
     card.append(title, author, pages, isRead, removeBook);
     bookCards.append(card);
 };
@@ -64,7 +66,7 @@ const authorPattern = /^[a-zA-Z\s]{1,}$/;
 const pagesPattern = /^[0-9]{1,}$/;
 
 //add user input book into library array
-const addBook = (e) => {
+const addBook = e => {
     e.preventDefault(); //to stop form from submitting and making page reload
     //get user input values from form
     let title = form.title.value;
@@ -78,14 +80,12 @@ const addBook = (e) => {
             const newBook = new Book(title, author, pages, isRead);
             myLibrary.push(newBook);
             printBook(newBook);
-            // console.table(myLibrary);
             document.querySelector('form').reset(); //to clear form for the next entries
         } else {
             isRead.value = `${unreadMessage}`;
             const newBook = new Book(title, author, pages, isRead);
             myLibrary.push(newBook);
             printBook(newBook);
-            // console.table(myLibrary);
             document.querySelector('form').reset(); //to clear form for the next entries
         }
     } else {
